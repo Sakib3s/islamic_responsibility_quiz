@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ইসলামের আলোকে দায়িত্ব মূল্যায়ন Quiz</title>
+  <title>ইসলামের আলোকে দায়িত্ব মূল্যায়ন</title>
   <style>
     * {
       box-sizing: border-box;
@@ -15,33 +16,100 @@
     body {
       background: #f4f7f6;
       color: #1f2937;
-      line-height: 1.7;
+      line-height: 1.8;
       padding: 20px;
     }
 
     .container {
-      max-width: 980px;
+      max-width: 1000px;
       margin: 0 auto;
       background: #ffffff;
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
     }
 
-    .header {
+    .hero {
       text-align: center;
+      padding: 28px 20px;
+      background: linear-gradient(135deg, #ecfdf5, #eff6ff);
+      border-radius: 18px;
       margin-bottom: 30px;
     }
 
-    .header h1 {
+    .hero h1 {
       color: #0f766e;
-      font-size: 30px;
+      font-size: 34px;
       margin-bottom: 10px;
     }
 
-    .header p {
-      color: #4b5563;
+    .hero p {
+      color: #374151;
+      font-size: 17px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .hero-action {
+      display: inline-block;
+      margin-top: 20px;
+      background: #0f766e;
+      color: #ffffff;
+      padding: 13px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .hero-action:hover {
+      background: #065f46;
+      transform: translateY(-2px);
+    }
+
+    .article {
+      margin-bottom: 40px;
+    }
+
+    .article h2 {
+      color: #065f46;
+      font-size: 24px;
+      margin: 26px 0 10px;
+    }
+
+    .article p {
+      margin: 10px 0;
+      color: #374151;
       font-size: 16px;
+    }
+
+    .highlight {
+      background: #ecfdf5;
+      padding: 16px;
+      border-left: 5px solid #0f766e;
+      border-radius: 12px;
+      margin: 18px 0;
+      color: #065f46;
+    }
+
+    .quiz-wrapper {
+      border-top: 2px dashed #d1d5db;
+      padding-top: 35px;
+    }
+
+    .quiz-heading {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .quiz-heading h2 {
+      color: #0f766e;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .quiz-heading p {
+      color: #4b5563;
     }
 
     .tabs {
@@ -80,13 +148,13 @@
     .quiz-title {
       margin-bottom: 18px;
       padding: 16px;
-      background: #ecfdf5;
-      border-left: 5px solid #0f766e;
+      background: #f0fdfa;
+      border-left: 5px solid #14b8a6;
       border-radius: 10px;
     }
 
-    .quiz-title h2 {
-      font-size: 24px;
+    .quiz-title h3 {
+      font-size: 23px;
       color: #065f46;
       margin-bottom: 6px;
     }
@@ -184,17 +252,36 @@
       color: #1e3a8a;
     }
 
+    footer {
+      margin-top: 45px;
+      padding-top: 20px;
+      border-top: 1px solid #e5e7eb;
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #0f766e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
     @media (max-width: 600px) {
+      body {
+        padding: 12px;
+      }
+
       .container {
         padding: 20px;
       }
 
-      .header h1 {
-        font-size: 24px;
+      .hero h1 {
+        font-size: 25px;
       }
 
-      .quiz-title h2 {
-        font-size: 20px;
+      .quiz-heading h2 {
+        font-size: 23px;
       }
 
       .tab-btn,
@@ -206,45 +293,86 @@
 </head>
 <body>
   <div class="container">
-    <div class="header">
+    <section class="hero">
       <h1>ইসলামের আলোকে দায়িত্ব মূল্যায়ন</h1>
-      <p>প্রতিটি “হ্যাঁ” উত্তরের জন্য ১ পয়েন্ট। শেষে আপনার দায়িত্বশীলতার স্কোর দেখুন।</p>
-    </div>
-
-    <div class="tabs">
-      <button class="tab-btn active" onclick="showQuiz('owner')">কোম্পানি মালিক / কর্তৃপক্ষ</button>
-      <button class="tab-btn" onclick="showQuiz('employee')">কর্মচারী</button>
-    </div>
-
-    <section id="owner" class="quiz-section active">
-      <div class="quiz-title">
-        <h2>নিয়োগকর্তার দায়িত্ব মূল্যায়ন</h2>
-        <p>ইসলামের আলোকে কর্মীদের প্রতি আপনার দায়িত্ব কতটা পালন করছেন?</p>
-      </div>
-      <form id="ownerForm"></form>
-      <div class="actions">
-        <button class="btn btn-primary" onclick="calculateScore('owner')">ফলাফল দেখুন</button>
-        <button class="btn btn-secondary" onclick="resetQuiz('owner')">রিসেট করুন</button>
-      </div>
-      <div id="ownerResult" class="result-box"></div>
+      <p>দায়িত্ব একটি আমানত। এই অ্যাপের মাধ্যমে আপনি ইসলামের আলোকে নিয়োগকর্তা ও কর্মচারীর দায়িত্ব সম্পর্কে পড়তে এবং নিজের অবস্থান মূল্যায়ন করতে পারবেন।</p>
+      <a href="#quiz-area" class="hero-action">নিজেকে মূল্যায়ন করুন</a>
     </section>
 
-    <section id="employee" class="quiz-section">
-      <div class="quiz-title">
-        <h2>কর্মচারীর দায়িত্ব মূল্যায়ন</h2>
-        <p>আপনার কাজ, সময় ও দায়িত্বকে আমানত হিসেবে কতটা পালন করছেন?</p>
+    <section class="article">
+      <h2>ইসলামে দায়িত্বশীলতার অপূর্ব শিক্ষা</h2>
+      <p>ইসলাম মানুষকে জীবনের প্রতিটি ক্ষেত্রে দায়িত্বশীল হতে শিক্ষা দেয়। কাজের ক্ষেত্রে সর্বোচ্চ দায়িত্ববোধ নিয়ে নিজের দায়িত্ব যথাযথভাবে পালন করা একজন মুমিনের বৈশিষ্ট্য।</p>
+
+      <p>যখন কোনো দায়িত্ব আমাদের ওপর অর্পিত হয়, তখন তা অবহেলা করা বা ফাঁকি দেওয়া ইসলামের দৃষ্টিতে গুরুতর অপরাধ। কারণ প্রতিটি দায়িত্বই একটি <strong>আমানত</strong>—আর আমানতের হক আদায় করা ঈমানের অংশ।</p>
+
+      <div class="highlight">
+        <strong>আমানত রক্ষা ইমানের অংশ</strong>
+        <p>আল্লাহ তাআলা বলেন: “যারা তাদের আমানত ও প্রতিশ্রুতি রক্ষা করে” — সুরা মুমিনুন: ৮</p>
       </div>
-      <form id="employeeForm"></form>
-      <div class="actions">
-        <button class="btn btn-primary" onclick="calculateScore('employee')">ফলাফল দেখুন</button>
-        <button class="btn btn-secondary" onclick="resetQuiz('employee')">রিসেট করুন</button>
+
+      <p>নবীজি (সা.) বলেছেন: “যে আমানত রক্ষা করে না, তার ইমানের দাবি যথার্থ নয়।” তাই কর্মক্ষেত্রের সময়, দায়িত্ব, অফিসের সম্পদ এবং প্রতিশ্রুতি—সবকিছুই সততার সাথে রক্ষা করা জরুরি।</p>
+
+      <h2>কর্মক্ষেত্রে দায়িত্ব ও সময়ের গুরুত্ব</h2>
+      <p>কাজের নির্ধারিত সময়ও একটি আমানত। সেই সময় নষ্ট করা, অলসতা করা বা অন্য কাজে ব্যয় করা খেয়ানতের শামিল। একজন সৎ কর্মচারী সময়মতো কাজে উপস্থিত হন, দায়িত্ব যথাযথভাবে পালন করেন এবং প্রতিষ্ঠানের ক্ষতি হয় এমন কাজ থেকে বিরত থাকেন।</p>
+
+      <h2>জবাবদিহিতার অনুভূতি</h2>
+      <div class="highlight">
+        নবীজি (সা.) বলেছেন: “তোমাদের প্রত্যেকেই দায়িত্বশীল, এবং প্রত্যেককে তার দায়িত্ব সম্পর্কে জিজ্ঞাসা করা হবে।” — বুখারি
       </div>
-      <div id="employeeResult" class="result-box"></div>
+      <p>এই হাদিস আমাদের স্মরণ করিয়ে দেয় যে দায়িত্ব শুধু মানুষের কাছে নয়, আল্লাহর কাছেও জবাবদিহিতার বিষয়। তাই মালিক, কর্মকর্তা ও কর্মচারী—সবার উচিত নিজ নিজ দায়িত্ব সততা ও নিষ্ঠার সাথে পালন করা।</p>
+
+      <h2>পারিশ্রমিক ও সততা</h2>
+      <p>ইসলাম ব্যবসা ও চাকরির ক্ষেত্রে স্বচ্ছতা, ন্যায় এবং সততার নির্দেশ দেয়। কাজের বিনিময়ে পূর্ণ পারিশ্রমিক নিয়ে সঠিকভাবে কাজ না করা প্রতারণার শামিল। একইভাবে কর্মীর অধিকার না দেওয়া বা অন্যায় আচরণ করাও দায়িত্বহীনতা।</p>
+
+      <h2>সাফল্যের মূল চাবিকাঠি</h2>
+      <p>একটি প্রতিষ্ঠানের সফলতা নির্ভর করে মালিক ও কর্মীদের পারস্পরিক সততা, দায়িত্বশীলতা এবং ন্যায়পরায়ণতার ওপর। একজন দায়িত্বশীল ব্যক্তি সবসময় মনে রাখেন—তিনি শুধু মানুষের কাছে নয়, আল্লাহর কাছেও জবাবদিহি।</p>
     </section>
 
-    <div class="note">
-      <strong>নোট:</strong> এই Quiz নিজেকে সংশোধন ও উন্নতির জন্য। ফলাফল কম হলে হতাশ না হয়ে দায়িত্ব, আমানত ও জবাবদিহিতার অনুভূতি বাড়ানোর চেষ্টা করুন।
-    </div>
+    <section id="quiz-area" class="quiz-wrapper">
+      <div class="quiz-heading">
+        <h2>নিজেকে মূল্যায়ন করুন</h2>
+        <p>প্রতিটি “হ্যাঁ” উত্তরের জন্য ১ পয়েন্ট। সব প্রশ্নের উত্তর দিয়ে আপনার ফলাফল দেখুন।</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" onclick="showQuiz(event, 'owner')">কোম্পানি মালিক / কর্তৃপক্ষ</button>
+        <button class="tab-btn" onclick="showQuiz(event, 'employee')">কর্মচারী</button>
+      </div>
+
+      <section id="owner" class="quiz-section active">
+        <div class="quiz-title">
+          <h3>নিয়োগকর্তার দায়িত্ব মূল্যায়ন</h3>
+          <p>ইসলামের আলোকে কর্মীদের প্রতি আপনার দায়িত্ব কতটা পালন করছেন?</p>
+        </div>
+        <form id="ownerForm"></form>
+        <div class="actions">
+          <button type="button" class="btn btn-primary" onclick="calculateScore('owner')">ফলাফল দেখুন</button>
+          <button type="button" class="btn btn-secondary" onclick="resetQuiz('owner')">রিসেট করুন</button>
+        </div>
+        <div id="ownerResult" class="result-box"></div>
+      </section>
+
+      <section id="employee" class="quiz-section">
+        <div class="quiz-title">
+          <h3>কর্মচারীর দায়িত্ব মূল্যায়ন</h3>
+          <p>আপনার কাজ, সময় ও দায়িত্বকে আমানত হিসেবে কতটা পালন করছেন?</p>
+        </div>
+        <form id="employeeForm"></form>
+        <div class="actions">
+          <button type="button" class="btn btn-primary" onclick="calculateScore('employee')">ফলাফল দেখুন</button>
+          <button type="button" class="btn btn-secondary" onclick="resetQuiz('employee')">রিসেট করুন</button>
+        </div>
+        <div id="employeeResult" class="result-box"></div>
+      </section>
+
+      <div class="note">
+        <strong>নোট:</strong> এই Quiz নিজেকে সংশোধন ও উন্নতির জন্য। ফলাফল কম হলে হতাশ না হয়ে দায়িত্ব, আমানত ও জবাবদিহিতার অনুভূতি বাড়ানোর চেষ্টা করুন।
+      </div>
+    </section>
+
+    <footer>
+      © Sakib Hasan | <a href="https://sakibweb.com/" target="_blank">https://sakibweb.com/</a>
+    </footer>
   </div>
 
   <script>
@@ -298,7 +426,7 @@
       });
     }
 
-    function showQuiz(type) {
+    function showQuiz(event, type) {
       document.querySelectorAll('.quiz-section').forEach(section => {
         section.classList.remove('active');
       });
